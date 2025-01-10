@@ -53,9 +53,28 @@ defmodule DeepWork.Limelight do
   def create_focus_sessions(attrs \\ %{}, user) do
     %FocusSessions{}
     |> FocusSessions.changeset(
-      put_user_id_in_attributes(attrs, user.id)
+      modify_attrs_for_session(attrs, user)
     )
     |> Repo.insert()
+  end
+
+  defp modify_attrs_for_session(attrs, user) do
+    attrs
+    |> put_user_id_in_attributes(user.id)
+    |> add_start_and_end_time(user)
+  end
+
+  defp add_start_and_end_time(attrs, user) do
+    {from, to} = get_from_and_to_dateteimes(attrs, user)
+    attrs
+    |> Map.put("start_time", from)
+    |> Map.put("end_time", to)
+    |> Map.put("session_date", NaiveDateTime.to_date(from))
+  end
+
+  defp get_from_and_to_dateteimes(attrs, user) do
+    from = DateTime.now!(user.time_zone) |> DateTime.to_naive()
+    {from, NaiveDateTime.add(from, attrs["expected_length"])}
   end
 
   @doc """
