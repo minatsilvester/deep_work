@@ -32,6 +32,7 @@ defmodule DeepWorkWeb.Router do
     pipe_through [:api, :fetch_api_user]
 
     resources "/focus_sessions", FocusSessionsController, except: [:new, :edit]
+    put "/focus_sessions/:id/stop", FocusSessionsController, :stop
   end
 
   scope "/", DeepWorkWeb do
