@@ -68,7 +68,7 @@ defmodule DeepWork.Limelight do
     {from, to} = get_from_and_to_dateteimes(attrs, user)
     attrs
     |> Map.put("start_time", from)
-    |> Map.put("end_time", to)
+    |> Map.put("expected_end_time", to)
     |> Map.put("session_date", NaiveDateTime.to_date(from))
   end
 

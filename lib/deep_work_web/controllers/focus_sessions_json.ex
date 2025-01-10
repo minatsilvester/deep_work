@@ -17,12 +17,13 @@ defmodule DeepWorkWeb.FocusSessionsJSON do
 
   defp data(%FocusSessions{} = focus_sessions) do
     %{
+      actual_length: focus_sessions.actual_length,
+      end_time: focus_sessions.end_time,
+      expected_end_time: focus_sessions.expected_end_time,
+      expected_length: focus_sessions.expected_length,
       id: focus_sessions.id,
       session_date: focus_sessions.session_date,
       start_time: focus_sessions.start_time,
-      end_time: focus_sessions.end_time,
-      expected_length: focus_sessions.expected_length,
-      actual_length: focus_sessions.actual_length
     }
   end
 end

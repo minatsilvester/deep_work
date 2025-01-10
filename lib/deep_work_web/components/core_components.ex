@@ -17,7 +17,8 @@ defmodule DeepWorkWeb.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import DeepWorkWeb.Gettext
+  # import DeepWorkWeb.Gettext
+  use Gettext, backend: DeepWorkWeb.Gettext
 
   @doc """
   Renders a modal.
