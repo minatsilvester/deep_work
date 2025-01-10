@@ -18,12 +18,18 @@ defmodule DeepWorkWeb.Router do
   end
 
   pipeline :api_authenticated do
-    plug :accepts, ["json"]
     plug :fetch_api_user
   end
 
   scope "/api", DeepWorkWeb do
     pipe_through :api
+
+    post "/sign_in", UserSessionController, :create_api_token
+    post "/sign_up", UsersController, :create
+  end
+
+  scope "/api", DeepWorkWeb do
+    pipe_through [:api, :fetch_api_user]
 
     resources "/focus_sessions", FocusSessionsController, except: [:new, :edit]
   end
