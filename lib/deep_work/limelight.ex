@@ -73,8 +73,19 @@ defmodule DeepWork.Limelight do
   end
 
   defp get_from_and_to_dateteimes(attrs, user) do
-    from = DateTime.now!(user.time_zone) |> DateTime.to_naive()
-    {from, NaiveDateTime.add(from, attrs["expected_length"])}
+    from = get_current_naive_datetime(user)
+    {from, NaiveDateTime.add(from, attrs["expected_length"] * 60)}
+  end
+
+  @doc """
+    Stop stop a active focus session
+    Updates the focus session's end_time
+  """
+  def stop_focus_sessions(%FocusSessions{} = focus_sessions, user) do
+    update_focus_sessions(
+      focus_sessions,
+      %{"end_time" => get_current_naive_datetime(user)}\
+    )
   end
 
   @doc """
