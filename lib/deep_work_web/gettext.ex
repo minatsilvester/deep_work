@@ -20,5 +20,5 @@ defmodule DeepWorkWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :deep_work
+  use Gettext.Backend, otp_app: :deep_work
 end
