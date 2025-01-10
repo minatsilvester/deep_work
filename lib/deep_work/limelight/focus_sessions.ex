@@ -7,8 +7,11 @@ defmodule DeepWork.Limelight.FocusSessions do
                         :start_time,
                         :end_time,
                         :expected_length,
-                        :actual_length,
                         :user_id
+                       ]
+
+  @optional_attributes [
+                        :actual_length
                        ]
 
   schema "focus_sessions" do
@@ -25,7 +28,7 @@ defmodule DeepWork.Limelight.FocusSessions do
   @doc false
   def changeset(focus_sessions, attrs) do
     focus_sessions
-    |> cast(attrs, @required_atttribute)
+    |> cast(attrs, @required_atttribute ++ @optional_attributes)
     |> validate_required(@required_atttribute)
   end
 end
