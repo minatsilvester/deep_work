@@ -4,6 +4,8 @@ defmodule DeepWorkWeb.UsersController do
   alias DeepWork.Accounts
   alias DeepWork.Accounts.User
 
+  action_fallback DeepWorkWeb.FallbackController
+
   def create(conn, %{"user" => user_params}) do
     with {:ok, %User{} = user} <- Accounts.register_user(user_params) do
       IO.inspect(user)
