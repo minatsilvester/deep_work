@@ -16,7 +16,7 @@ defmodule DeepWork.Limelight.FocusSessions do
                        ]
 
   schema "focus_sessions" do
-    field :actual_length, :string
+    field :actual_length, :integer
     field :end_time, :naive_datetime
     field :expected_end_time, :naive_datetime
     field :expected_length, :integer

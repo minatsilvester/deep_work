@@ -18,7 +18,7 @@ defmodule DeepWorkWeb.UserSessionController do
     create(conn, params, "Welcome back!")
   end
 
-  def create_api_token(conn, user_params) do
+  def create_api_token(conn, %{"user" => user_params}) do
     %{"email" => email, "password" => password} = user_params
 
     if user = Accounts.get_user_by_email_and_password(email, password) do
