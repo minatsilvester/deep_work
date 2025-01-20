@@ -7,7 +7,6 @@ defmodule DeepWorkWeb.UsersJSON do
         last_name: user.last_name,
         email: user.email,
         time_zone: user.time_zone,
-        message: "Registration Successfull, Please log in"
       }
     }
   end

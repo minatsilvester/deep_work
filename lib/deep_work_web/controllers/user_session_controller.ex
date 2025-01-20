@@ -25,7 +25,7 @@ defmodule DeepWorkWeb.UserSessionController do
       encoded_token = Accounts.create_user_api_token(user)
 
       conn
-      |> render(:show, %{id: user.id, email: user.email, token: encoded_token})
+      |> render(:show, %{id: user.id, email: user.email, first_name: user.first_name, last_name: user.last_name, time_zone: user.time_zone , token: encoded_token})
     else
       conn
       |> put_status(:not_found)
