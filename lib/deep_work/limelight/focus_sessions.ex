@@ -7,7 +7,8 @@ defmodule DeepWork.Limelight.FocusSessions do
                         :session_date,
                         :start_time,
                         :user_id,
-                        :expected_end_time
+                        :expected_end_time,
+                        :name,
                        ]
 
   @optional_attributes [
@@ -20,6 +21,7 @@ defmodule DeepWork.Limelight.FocusSessions do
     field :end_time, :naive_datetime
     field :expected_end_time, :naive_datetime
     field :expected_length, :integer
+    field :name, :string
     field :session_date, :date
     field :start_time, :naive_datetime
     belongs_to :user, DeepWork.Accounts.User
