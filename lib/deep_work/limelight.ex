@@ -81,10 +81,10 @@ defmodule DeepWork.Limelight do
     Stop stop a active focus session
     Updates the focus session's end_time
   """
-  def stop_focus_sessions(%FocusSessions{} = focus_sessions, user) do
+  def stop_focus_sessions(%FocusSessions{} = focus_sessions, attrs, user) do
     update_focus_sessions(
       focus_sessions,
-      %{"end_time" => get_current_naive_datetime(user)}\
+      Map.put(attrs, "end_time", get_current_naive_datetime(user))
     )
   end
 
