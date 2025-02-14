@@ -24,6 +24,7 @@ defmodule DeepWork.Limelight.FocusSessions do
     field :name, :string
     field :session_date, :date
     field :start_time, :naive_datetime
+    field :status, :string
     belongs_to :user, DeepWork.Accounts.User
 
     timestamps(type: :utc_datetime)
@@ -34,5 +35,6 @@ defmodule DeepWork.Limelight.FocusSessions do
     focus_sessions
     |> cast(attrs, @required_atttribute ++ @optional_attributes)
     |> validate_required(@required_atttribute)
+    |> validate_inclusion(:status, ["inprogress", "completed", "cancelled"])
   end
 end
