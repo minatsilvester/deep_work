@@ -24,7 +24,7 @@ defmodule DeepWork.Limelight.FocusSessions do
     field :name, :string
     field :session_date, :date
     field :start_time, :naive_datetime
-    field :status, :string
+    field :status, :string, default: "inprogress"
     belongs_to :user, DeepWork.Accounts.User
 
     timestamps(type: :utc_datetime)
