@@ -11,4 +11,8 @@ defmodule DeepWork.Utils.Common do
   def get_current_naive_datetime(user) do
     DateTime.now!(user.time_zone) |> DateTime.to_naive()
   end
+
+  def get_todays_date(user) do
+    DateTime.now!(user.time_zone) |> DateTime.to_date()
+  end
 end

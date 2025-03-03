@@ -7,7 +7,7 @@ defmodule DeepWorkWeb.FocusSessionsController do
   action_fallback DeepWorkWeb.FallbackController
 
   def index(conn, _params) do
-    focus_sessions = Limelight.list_focus_sessions(conn.assigns.current_user)
+    focus_sessions = Limelight.list_focus_sessions(conn.assigns.current_user, conn.query_params)
     render(conn, :index, focus_sessions: focus_sessions)
   end
 

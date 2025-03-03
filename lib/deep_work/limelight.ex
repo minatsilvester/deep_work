@@ -6,6 +6,7 @@ defmodule DeepWork.Limelight do
   import Ecto.Query, warn: false
   import DeepWork.Utils.Common
 
+  alias DeepWork.Utils.Common
   alias DeepWork.Repo
   alias DeepWork.Limelight.FocusSessions
 
@@ -18,8 +19,19 @@ defmodule DeepWork.Limelight do
       [%FocusSessions{}, ...]
 
   """
-  def list_focus_sessions(user) do
-    from(fs in FocusSessions, where: fs.user_id == ^user.id) |> Repo.all()
+  def list_focus_sessions(user, query_params) do
+    from(fs in FocusSessions, where: fs.user_id == ^user.id)
+    |> filter_by_user_and_query_params(user, query_params["date"])
+    |> Repo.all()
+  end
+
+  defp filter_by_user_and_query_params(query, user, nil) do
+    date = Common.get_todays_date(user)
+    from(q in query, where: q.session_date == ^date)
+  end
+
+  defp filter_by_user_and_query_params(query, _user, date) do
+    from(q in query, where: q.session_date == ^date)
   end
 
   @doc """
