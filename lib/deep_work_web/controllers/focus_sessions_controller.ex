@@ -33,10 +33,10 @@ defmodule DeepWorkWeb.FocusSessionsController do
     end
   end
 
-  def stop(conn, %{"id" => id, "focus_sessions" => focus_sessions_params}) do
+  def stop(conn, %{"id" => id}) do
     focus_sessions = Limelight.get_focus_sessions!(id)
 
-    with {:ok, %FocusSessions{} = focus_sessions} <- Limelight.stop_focus_sessions(focus_sessions, focus_sessions_params, conn.assigns.current_user) do
+    with {:ok, %FocusSessions{} = focus_sessions} <- Limelight.stop_focus_sessions(focus_sessions, conn.assigns.current_user) do
       render(conn, :show, focus_sessions: focus_sessions)
     end
   end

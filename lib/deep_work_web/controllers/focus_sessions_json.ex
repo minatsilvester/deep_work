@@ -24,7 +24,8 @@ defmodule DeepWorkWeb.FocusSessionsJSON do
       id: focus_sessions.id,
       session_date: focus_sessions.session_date,
       start_time: focus_sessions.start_time,
-      name: focus_sessions.name
+      name: focus_sessions.name,
+      status: focus_sessions.status
     }
   end
 end

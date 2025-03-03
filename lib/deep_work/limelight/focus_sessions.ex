@@ -14,6 +14,7 @@ defmodule DeepWork.Limelight.FocusSessions do
   @optional_attributes [
                         :actual_length,
                         :end_time,
+                        :status
                        ]
 
   schema "focus_sessions" do
