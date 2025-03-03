@@ -15,4 +15,8 @@ defmodule DeepWork.Utils.Common do
   def get_todays_date(user) do
     DateTime.now!(user.time_zone) |> DateTime.to_date()
   end
+
+  def get_difference_in_naive_date_time(end_time, start_time) do
+    NaiveDateTime.diff(end_time, start_time)
+  end
 end

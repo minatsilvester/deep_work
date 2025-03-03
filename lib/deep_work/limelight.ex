@@ -94,10 +94,13 @@ defmodule DeepWork.Limelight do
     Updates the focus session's end_time
   """
   def stop_focus_sessions(%FocusSessions{} = focus_sessions, user) do
+    end_time = get_current_naive_datetime(user)
     update_focus_sessions(
       focus_sessions,
       %{}
-      |> Map.put("end_time", get_current_naive_datetime(user))
+      |> Map.put("end_time", end_time)
+      |> Map.put("actual_length",
+        get_difference_in_naive_date_time(end_time, focus_sessions.start_time) / 60)
       |> Map.put("status", "completed")
     )
   end
