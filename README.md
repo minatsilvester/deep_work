@@ -1,4 +1,13 @@
-# DeepWork
+# Deep Work Backend
+
+The Deep Work Backend is a robust and scalable API built to support the Deep Work mobile app. It manages user focus sessions, tracks session durations, and provides insightful summaries of daily focus time.
+## Getting Started
+
+### Prerequisites
+Ensure you have the following installed:
+
+- Elixir/Phoenix
+- PostgreSQL
 
 To start your Phoenix server:
 
